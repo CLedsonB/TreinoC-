@@ -1,4 +1,4 @@
-#include <iostream.h>
+#include <iostream>
 #include <vector>
 #include <utility>
 #include <string>
@@ -11,53 +11,59 @@ struct loja {
     int Nv;
 };
 
-int maiorValor(int array[], int tamanho) {
+int maiorValor(vector <int> array, int tamanho) {
+    int indice = 0; 
     int maior = array[0];
 
     for (int i = 1; i < tamanho; i++) {
         if (array[i] > maior) {
             maior = array[i];
+            indice = i;
         }
     }
-    return maior;
+    return indice;
 }
 
 int main() {
-    vector<loja> valores;
-    vector<loja> danos;
-    vector<loja> Nvalores;
-    loja aux;
-    
-    int i, y, x, dMaior, contador;
-    
+    vector<int> valores;
+    vector<int> danos;
+    vector<int> Nvalores;
+
+    int i, y, x, indice;
+
     cout << "num. itens --> ";
     cin >> y;
-    
+
     cout << "valores --> ";
     for(i=0;i<y;i++){
-        cin >> aux.v;
-        valores.push_back(aux);
+        int valor;
+        cin >> valor;
+        valores.push_back(valor);
         }
-    
+
     cout << "danos --> ";
     for(i=0;i<y;i++){
-        cin >> aux.d;
-        danos.push_back(aux);
+        int dano;
+        cin >> dano;
+        danos.push_back(dano);
     }
-    
+
     cout << "valor --> ";
     cin >> x;
-   
+
    //criar novo array com produtos q ele pode comprar
-   
+
     for(i=0;i<y;i++){
-        if(x>=valores[i].v)
+        if(x>=valores[i])
             Nvalores[i] = valores[i];
         }
-        
-        //imprimir valores do novo array
-        
-        for(i=0;i<y;i++)
-            cout << valores;
-    
+
+    int tamanho = sizeof(Nvalores) / sizeof(int);
+
+    if(tamanho==0){
+      cout << "Yan Pobre" << endl;
+    }else {
+      indice = maiorValor(Nvalores, tamanho);
+      cout << valores[indice] << danos[indice] << endl;
+    }
 }
